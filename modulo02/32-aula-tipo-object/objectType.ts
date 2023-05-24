@@ -64,3 +64,85 @@ function onboarding04(pessoa: Pessoa04) {
 }
 
 console.log(onboarding04({ nome: 'Jansen Muniz', funcao: 'Frontend Developer', linguagem: 'JavaScript/TypeScript' }))
+
+// => Exemplo 06: Propriedade 'readonly' (se deseja proibir que os devs não modifiquem um determinado objeto use o 'readonly')
+
+interface Pessoas05 {
+  nome: string
+  funcao: string
+  linguagem: string
+  readonly email: string
+}
+
+function onboarding05(pessoa: Pessoas05) {
+  return (
+    'Seja bem-vindo ' + pessoa.nome + '!' + ' Sua função na empresa será ' + pessoa.funcao + '.' + ' Você trabalhará com a linguagem ' + pessoa.linguagem + '.' + ' Seu email será ' + pessoa.email
+  )
+}
+
+console.log(onboarding05({ nome: 'Jansen Muniz', funcao: 'Frontend Developer', linguagem: 'JavaScript/TypeScript', email: 'jansen@email.com' }))
+
+// => Exemplo 07: tipos de extensões(heranças)
+
+interface Mae {
+  nome: string
+}
+
+interface Pai {
+  sobrenome: string
+}
+
+interface Filho extends Mae, Pai {
+  idade: number
+}
+
+const filho: Filho = {
+  nome: 'Jansen',
+  sobrenome: 'Muniz',
+  idade: 33
+}
+
+console.log(filho)
+
+// => Exemplo 08: tipos de interseções
+
+interface Cachorro {
+  tipo: string
+}
+
+interface Gato {
+  tipo: string
+}
+
+type Animal = Cachorro & Gato
+
+// => Exemplo 09: Generic Objects
+
+type Usuario = {
+  nome: string
+  email: string
+}
+
+type Admin = {
+  nome: string
+  email: string
+  admin: true
+}
+
+const usuario: Usuario = {
+  nome: 'Jansen Muniz',
+  email: 'jansen@email.com'
+}
+
+const admin: Admin = {
+  nome: 'Jansen Muniz',
+  email: 'jansen@email.com',
+  admin: true
+}
+
+function acessarSistema<T>(usuario: T): T {
+  return usuario
+}
+
+console.log(acessarSistema<Usuario>(usuario))
+console.log(acessarSistema<Admin>(admin))
