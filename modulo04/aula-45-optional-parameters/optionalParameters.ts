@@ -22,3 +22,17 @@ mensagemLog('Usuário(a) logado(a) com sucesso', 123)
 
 //exemplo 03
 
+type Car = {
+  marca: string
+  anoLanc: number
+  motor?: string
+}
+
+let car: Car
+
+car = {
+  marca: 'Fiat',
+  anoLanc: 2013
+}
+
+console.log(car)
